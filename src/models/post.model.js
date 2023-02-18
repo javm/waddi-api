@@ -12,6 +12,9 @@ const Post = sequelize.define('Post', {
   },
   body: {
     type: DataTypes.TEXT
+  },
+  reviews: {
+    type: DataTypes.JSON
   }
 }, {
   tableName: 'posts',
