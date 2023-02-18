@@ -1,0 +1,42 @@
+{
+  "name": "waddi-api",
+  "version": "1.0.0",
+  "description": "A user administrator for blogs",
+  "main": "app.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app.js",
+    "lint": "eslint .",
+    "lint-fix": "eslint . --fix",
+    "test": "npm test"
+  },
+  "imports": {
+    "#routes/*": "./src/routes/*.js",
+    "#utils/*": "./src/utils/*.js",
+    "#controllers/*": "./src/controllers/*.js",
+    "#models/*": "./src/models/*.js",
+    "#middlewares/*": "./src/middlewares/*.js",
+    "#config/*": "./config/*.js",
+    "#validations/*": "./src/validations/*.js"
+  },
+  "author": "José A. Villarreal",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.1.0",
+    "cookie-parser": "^1.4.6",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "helmet": "^6.0.1",
+    "joi": "^17.7.1",
+    "jsonwebtoken": "^9.0.0",
+    "keyv": "^4.5.2",
+    "morgan": "^1.10.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.20"
+  }
+}
