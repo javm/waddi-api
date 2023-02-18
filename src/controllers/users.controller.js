@@ -1,11 +1,11 @@
 const bcrypt = require('bcrypt');
-const UserModel = require('#models/user.model');
+const { User } = require('#models/index');
 const jwtConfig = require('#config/jwt.config');
 const cache = require('#utils/cache.util');
 const jwt = require('#utils/jwt.util');
 
 const register = async (req, res) => {
-  const isExist = await UserModel.findOne({
+  const isExist = await User.findOne({
     where: {
       email: req.body.email
     }
@@ -15,7 +15,7 @@ const register = async (req, res) => {
   }
   const hashedPassword = await bcrypt.hash(req.body.password, 10);
 
-  const user = await UserModel.create({
+  const user = await User.create({
     name: req.body.name,
     email: req.body.email,
     password: hashedPassword
@@ -24,7 +24,7 @@ const register = async (req, res) => {
 }
 
 const login = async (req, res) => {
-  const user = await UserModel.findOne({
+  const user = await User.findOne({
     where: {
       email: req.body.email
     }
@@ -44,7 +44,7 @@ const login = async (req, res) => {
 }
 
 const getUser = async (req, res) => {
-  const user = await UserModel.findByPk(req.user.id);
+  const user = await User.findByPk(req.user.id);
   return res.json(user);
 }
 
@@ -60,7 +60,7 @@ const logout = async (req, res) => {
 }
 
 const get = async (req, res) => {
-  const users = await UserModel.findAll();
+  const users = await User.findAll();
   return res.status(200).json(users);
 }
 

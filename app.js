@@ -16,10 +16,10 @@ app.use(express.urlencoded({ extended: true })); // Parse incoming requests with
 // Routes
 //const authRouter = require('#routes/auth.router');
 const usersRouter = require('#routes/users.router');
-//const postsRouter = require('#routes/posts.router');
+const postsRouter = require('#routes/posts.router');
 //app.use('/auth', authRouter);
-app.use('/users', usersRouter);
-//app.use('/posts', postsRouter);
+app.use('/api/users', usersRouter);
+app.use('/api/posts', postsRouter);
 
 // Error handling middleware
 //const errorHandler = require('#utils/errorHandler');

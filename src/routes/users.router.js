@@ -6,7 +6,6 @@ const authGuard = require('#middlewares/auth.middleware');
 const schema = require('#validations/auth.validation');
 const validate = require('#utils/validator.util'); 
 
-/* GET users */
 router.get('/', usersController.get);
 router.post('/register', validate(schema.register), errorHandler(usersController.register));
 router.post('/login',    validate(schema.login),    errorHandler(usersController.login));
