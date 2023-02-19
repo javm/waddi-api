@@ -25,3 +25,10 @@ npm run dev
   --header 'Content-Type: application/json' \
   --data '   {"name": "Juan Creator", "email": "juan.creator@waddi.com", "password": "creator123", "role": "creator"}'
   ```
+# Create a post
+```curl --request POST \
+  --url http://localhost:3000/api/posts \
+  --header 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiaWF0IjoxNjc2ODI2OTQ2LCJleHAiOjE2NzY4MzA1NDZ9.FzBf1ig8o45KryiNAwwccuoCEm7rLgcm1G_IaqF1lVU' \
+  --header 'Content-Type: application/json' \
+  --data '  {"title": "Blog test 1", "content": "Just for fun"}'
+  ```
