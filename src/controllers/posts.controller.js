@@ -1,6 +1,8 @@
+
+const {Op} = require('sequelize');
+const moment = require('moment');
 const { Post } = require('#models/index');
 const { PostLog } = require('#models/index');
-const {Op} = require('sequelize');
 
 const get = async (req, res) => {
   const {start_date, end_date} = req.query;
@@ -15,7 +17,14 @@ const get = async (req, res) => {
     }
   }
   const posts = await Post.findAll(queryObj);
-  return res.status(200).json(posts);
+  const postsTagged = posts.map(post => {
+    const createdAt = moment(post.created_at).format('YYYY-MM-DD')
+    if(createdAt > moment().add(1, 'week').format('YYYY-MM-DD')) {
+      return {...post.dataValues, tag: 'older-than-a-week'};
+    }
+    return post;
+  });
+  return res.status(200).json(postsTagged);
 }
 
 const post = async (req, res) => {
