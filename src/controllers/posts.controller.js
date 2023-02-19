@@ -2,7 +2,7 @@ const { Post } = require('#models/index');
 const { PostLog } = require('#models/index');
 
 const get = async (req, res) => {
-  const posts = await Post.findAll();
+  const posts = await Post.findAll({order: [['id', 'DESC']]});
   return res.status(200).json(posts);
 }
 
