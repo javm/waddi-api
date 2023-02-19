@@ -17,5 +17,8 @@ router.post('/register',
     validate(schema.register), 
     errorHandler(usersController.register));
 router.post('/login',    validate(schema.login),    errorHandler(usersController.login));
-router.get('/user',      authGuard,                 errorHandler(usersController.getUser));
+router.get('/:id',
+    authGuard,
+    authGuardAdmin,
+    errorHandler(usersController.getUser));
 module.exports = router;

@@ -4,6 +4,11 @@ const jwtConfig = require('#config/jwt.config');
 const cache = require('#utils/cache.util');
 const jwt = require('#utils/jwt.util');
 
+const toJSON = (user) => {
+  const { id, name, email, role } = user;
+  return { id, name, email, role };
+};
+
 const register = async (req, res) => {
   const isExist = await User.findOne({
     where: {
@@ -21,11 +26,7 @@ const register = async (req, res) => {
     password: hashedPassword,
     role: req.body.role
   });
-  return res.status(201).json({
-    name: user.name,
-    email: user.email,
-    role: user.role
-  });
+  return res.status(201).json(toJSON(user));
 }
 
 const login = async (req, res) => {
@@ -49,8 +50,8 @@ const login = async (req, res) => {
 }
 
 const getUser = async (req, res) => {
-  const user = req.user;
-  return res.json(user);
+  const user = await User.findByPk(req.params.id);
+  return res.json(toJSON(user));
 }
 
 const logout = async (req, res) => {
@@ -66,7 +67,7 @@ const logout = async (req, res) => {
 
 const get = async (req, res) => {
   const users = await User.findAll();
-  return res.status(200).json(users);
+  return res.status(200).json(users.map(toJSON));
 }
 
 module.exports = {
