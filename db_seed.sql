@@ -36,7 +36,8 @@ CREATE TABLE public.post_logs (
     action character varying(100) NOT NULL,
     post_id integer NOT NULL,
     user_id integer NOT NULL,
-    created_at timestamp without time zone DEFAULT CURRENT_TIMESTAMP
+    created_at timestamp without time zone DEFAULT CURRENT_TIMESTAMP,
+    updated_at timestamp without time zone DEFAULT CURRENT_TIMESTAMP
 );
 
 
@@ -211,7 +212,8 @@ ALTER TABLE ONLY public.users ALTER COLUMN id SET DEFAULT nextval('public.users_
 -- Data for Name: post_logs; Type: TABLE DATA; Schema: public; Owner: caveira
 --
 
-COPY public.post_logs (id, action, post_id, user_id, created_at) FROM stdin;
+COPY public.post_logs (id, action, post_id, user_id, created_at, updated_at) FROM stdin;
+1	create	1	2	2023-02-19 17:16:00.069	2023-02-19 17:16:00.069
 \.
 
 
@@ -220,6 +222,7 @@ COPY public.post_logs (id, action, post_id, user_id, created_at) FROM stdin;
 --
 
 COPY public.posts (id, title, content, created_at, updated_at) FROM stdin;
+1	Blog test 1	Just for fun	2023-02-19 17:16:00.056	2023-02-19 17:16:00.056
 \.
 
 
@@ -236,8 +239,8 @@ COPY public.reviews (id, content, rating, post_id, user_id, created_at, updated_
 --
 
 COPY public.users (id, name, email, password, role, created_at, updated_at) FROM stdin;
-1	waddi	admin@waddi.com	$2b$10$pomyyfBE2gNKmG7tC3viq.KV9TzM47pNtgPGeJLU5ijYmlqKElVee	admin	2023-02-19 15:45:02.736	2023-02-19 15:45:02.736
-2	Juan Editor	juan.editor@waddi.com	$2b$10$AOEwQgA14NIVzCBT0F2Kr.0BjJCcLTo78/u.1EfeQe1GBs1jDt9TK	editor	2023-02-19 15:46:01.701	2023-02-19 15:46:01.701
+1	waddi	admin@waddi.com	$2b$10$sNPfZGBUqpmUTLs1kLyaAO6RZ4MvpdVq7zwq9t6lQllaMfNAWLZIq	admin	2023-02-19 17:15:12.071	2023-02-19 17:15:12.071
+2	Juan Creator	juan.creator@waddi.com	$2b$10$0mk9Zgf17ZONt87a/SYFle1R841dW8tKITjIy7TXYQR6D4l/Q4M/a	creator	2023-02-19 17:15:34.164	2023-02-19 17:15:34.164
 \.
 
 
@@ -245,14 +248,14 @@ COPY public.users (id, name, email, password, role, created_at, updated_at) FROM
 -- Name: post_logs_id_seq; Type: SEQUENCE SET; Schema: public; Owner: caveira
 --
 
-SELECT pg_catalog.setval('public.post_logs_id_seq', 1, false);
+SELECT pg_catalog.setval('public.post_logs_id_seq', 1, true);
 
 
 --
 -- Name: posts_id_seq; Type: SEQUENCE SET; Schema: public; Owner: caveira
 --
 
-SELECT pg_catalog.setval('public.posts_id_seq', 1, false);
+SELECT pg_catalog.setval('public.posts_id_seq', 1, true);
 
 
 --

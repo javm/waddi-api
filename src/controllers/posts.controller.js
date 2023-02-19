@@ -1,4 +1,5 @@
 const { Post } = require('#models/index');
+const { PostLog } = require('#models/index');
 
 const get = async (req, res) => {
   const posts = await Post.findAll();
@@ -11,7 +12,11 @@ const post = async (req, res) => {
     title,
     content
   });
-  return res.status(201).json(post);
+  const postLog = await PostLog.create({
+    user_id: req.user.id, post_id: post.id,
+    action: 'create'
+  });
+  return res.status(201).json({post: post, postLog: postLog});
 }
 
 module.exports = {

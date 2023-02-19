@@ -10,3 +10,18 @@ db_seed.sql
 
 # Run
 npm run dev
+
+# Login as admin
+```curl --request POST \
+  --url http://localhost:3000/api/users/login \
+  --header 'Content-Type: application/json' \
+  --data '  {"email": "admin@waddi.com", "password": "admin123"}'
+  ```
+
+# Register a creator
+```curl --request POST \
+  --url http://localhost:3000/api/users/register \
+  --header 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjc2ODI1OTM2LCJleHAiOjE2NzY4Mjk1MzZ9.G42ysm1cnrYtrMbxQXEziG8-ZFiL3GXYe-lfdMc4rxM' \
+  --header 'Content-Type: application/json' \
+  --data '   {"name": "Juan Creator", "email": "juan.creator@waddi.com", "password": "creator123", "role": "creator"}'
+  ```
