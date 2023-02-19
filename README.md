@@ -32,3 +32,17 @@ npm run dev
   --header 'Content-Type: application/json' \
   --data '  {"title": "Blog test 1", "content": "Just for fun"}'
   ```
+# Get all posts
+```
+curl --request GET \
+  --url http://localhost:3000/api/posts \
+  --header 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiaWF0IjoxNjc2ODI2MjAwLCJleHAiOjE2NzY4Mjk4MDB9.Yz71SHyXL9QxSzyaX91yQixJbATsoWY7E2K0mBOsd8E' \
+  --header 'Content-Type: application/json'
+```
+# Get all posts by date range
+```
+curl --request GET \
+  --url 'http://localhost:3000/api/posts?start_date='\''2023-02-19'\''&end_date='\''2023-02-20'\''' \
+  --header 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiaWF0IjoxNjc2ODI2MjAwLCJleHAiOjE2NzY4Mjk4MDB9.Yz71SHyXL9QxSzyaX91yQixJbATsoWY7E2K0mBOsd8E' \
+  --header 'Content-Type: application/json'
+```

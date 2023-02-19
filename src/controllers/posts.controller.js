@@ -1,8 +1,20 @@
 const { Post } = require('#models/index');
 const { PostLog } = require('#models/index');
+const {Op} = require('sequelize');
 
 const get = async (req, res) => {
-  const posts = await Post.findAll({order: [['id', 'DESC']]});
+  const {start_date, end_date} = req.query;
+  const queryObj = {
+    order: [['created_at', 'DESC']]
+  };
+  if (start_date && end_date) {
+    queryObj.where = {
+      created_at: {
+        [Op.between]: [new Date(start_date), new Date(end_date)]
+      }
+    }
+  }
+  const posts = await Post.findAll(queryObj);
   return res.status(200).json(posts);
 }
 
