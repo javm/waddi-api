@@ -18,9 +18,14 @@ const register = async (req, res) => {
   const user = await User.create({
     name: req.body.name,
     email: req.body.email,
-    password: hashedPassword
+    password: hashedPassword,
+    role: req.body.role
   });
-  return res.json(user);
+  return res.status(201).json({
+    name: user.name,
+    email: user.email,
+    role: user.role
+  });
 }
 
 const login = async (req, res) => {
@@ -44,7 +49,7 @@ const login = async (req, res) => {
 }
 
 const getUser = async (req, res) => {
-  const user = await User.findByPk(req.user.id);
+  const user = req.user;
   return res.json(user);
 }
 

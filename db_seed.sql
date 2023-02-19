@@ -236,7 +236,7 @@ COPY public.reviews (id, body, rating, post_id, user_id, created_at, updated_at)
 --
 
 COPY public.users (id, name, email, password, role, created_at, updated_at) FROM stdin;
-1	waddi	admin@waddi.com	$2b$10$rcWgwbgtibsXxTdxONwXbOX3Pk4gHz6y/fW4sGx9jb1YZdt3skLLu	editor	2023-02-18 22:05:53.426	2023-02-18 22:05:53.426
+1	waddi	admin@waddi.com	$2b$10$KwigYaL0eWIlZnxLwAMBWu0ezXu2hzNZRIYSnHkSJwV0Qkykhutqy	admin	2023-02-19 03:56:07.391	2023-02-19 03:56:07.391
 \.
 
 

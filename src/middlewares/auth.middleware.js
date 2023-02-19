@@ -1,5 +1,6 @@
 const cache = require('#utils/cache.util');
 const jwt = require('#utils/jwt.util');
+const { User } = require('#models/index');
 
 module.exports = async (req, res, next) => {
 
@@ -18,7 +19,7 @@ module.exports = async (req, res, next) => {
       }
 
       const decoded = await jwt.verifyToken(token);
-      req.user = decoded;
+      req.user = await User.findByPk(decoded.id);
       req.token = token;
       next();
 
