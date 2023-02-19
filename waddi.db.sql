@@ -11,14 +11,14 @@ CREATE TABLE users (
 CREATE TABLE posts (
     id SERIAL PRIMARY KEY,
     title VARCHAR(100) NOT NULL,
-    body TEXT NOT NULL,
+    content TEXT NOT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
 CREATE TABLE reviews (
     id SERIAL PRIMARY KEY,
-    body TEXT NOT NULL,
+    content TEXT NOT NULL,
     rating INTEGER NOT NULL,
     post_id INTEGER NOT NULL,
     user_id INTEGER NOT NULL,

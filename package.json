@@ -2,13 +2,13 @@
   "name": "waddi-api",
   "version": "1.0.0",
   "description": "A user administrator for blogs",
-  "main": "app.js",
+  "main": "index.js",
   "directories": {
     "test": "test"
   },
   "scripts": {
-    "start": "node app.js",
-    "dev": "nodemon app.js",
+    "start": "node index.js",
+    "dev": "nodemon index.js",
     "lint": "eslint .",
     "lint-fix": "eslint . --fix",
     "test": "jest --coverage --verbose --detectOpenHandles --forceExit"

@@ -1,8 +1,5 @@
 const express = require('express');
-require('dotenv').config();
 const app = express();
-const port = process.env.PORT || 3000; // Use the port defined in the environment variables or 3000 as the default port
-
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const morgan = require('morgan');
@@ -19,11 +16,5 @@ const postsRouter = require('#routes/posts.router');
 //app.use('/auth', authRouter);
 app.use('/api/users', usersRouter);
 app.use('/api/posts', postsRouter);
-
-
-// Start the server
-app.listen(port, () => {
-  console.log(`Server running on port ${port}`);
-});
 
 module.exports = app;

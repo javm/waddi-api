@@ -10,7 +10,7 @@ const Post = sequelize.define('Post', {
   title: {
     type: DataTypes.STRING
   },
-  body: {
+  content: {
     type: DataTypes.TEXT
   }
 }, {

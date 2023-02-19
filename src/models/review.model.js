@@ -6,7 +6,7 @@ const Review = sequelize.define('Review', {
     autoIncrement: true,
     primaryKey: true
   },
-  body: {
+  content: {
     type: DataTypes.TEXT
   },
   raiting: {

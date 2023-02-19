@@ -1,4 +1,4 @@
-# Waddi blog system
+# Waddi blog system Setup
 1. npm install
 2. Database:\
 2.1 CREATE DATABASE waddi;\
@@ -7,3 +7,6 @@
 3. npm test
 # Seed
 db_seed.sql
+
+# Run
+npm run dev

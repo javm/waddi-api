@@ -3,7 +3,7 @@
 --
 
 -- Dumped from database version 10.5 (Debian 10.5-2.pgdg90+1)
--- Dumped by pg_dump version 15.1 (Debian 15.1-1+b1)
+-- Dumped by pg_dump version 15.2 (Debian 15.2-1)
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -71,7 +71,7 @@ ALTER SEQUENCE public.post_logs_id_seq OWNED BY public.post_logs.id;
 CREATE TABLE public.posts (
     id integer NOT NULL,
     title character varying(100) NOT NULL,
-    body text NOT NULL,
+    content text NOT NULL,
     created_at timestamp without time zone DEFAULT CURRENT_TIMESTAMP,
     updated_at timestamp without time zone DEFAULT CURRENT_TIMESTAMP
 );
@@ -107,7 +107,7 @@ ALTER SEQUENCE public.posts_id_seq OWNED BY public.posts.id;
 
 CREATE TABLE public.reviews (
     id integer NOT NULL,
-    body text NOT NULL,
+    content text NOT NULL,
     rating integer NOT NULL,
     post_id integer NOT NULL,
     user_id integer NOT NULL,
@@ -219,7 +219,7 @@ COPY public.post_logs (id, action, post_id, user_id, created_at) FROM stdin;
 -- Data for Name: posts; Type: TABLE DATA; Schema: public; Owner: caveira
 --
 
-COPY public.posts (id, title, body, created_at, updated_at) FROM stdin;
+COPY public.posts (id, title, content, created_at, updated_at) FROM stdin;
 \.
 
 
@@ -227,7 +227,7 @@ COPY public.posts (id, title, body, created_at, updated_at) FROM stdin;
 -- Data for Name: reviews; Type: TABLE DATA; Schema: public; Owner: caveira
 --
 
-COPY public.reviews (id, body, rating, post_id, user_id, created_at, updated_at) FROM stdin;
+COPY public.reviews (id, content, rating, post_id, user_id, created_at, updated_at) FROM stdin;
 \.
 
 
@@ -236,7 +236,8 @@ COPY public.reviews (id, body, rating, post_id, user_id, created_at, updated_at)
 --
 
 COPY public.users (id, name, email, password, role, created_at, updated_at) FROM stdin;
-1	waddi	admin@waddi.com	$2b$10$KwigYaL0eWIlZnxLwAMBWu0ezXu2hzNZRIYSnHkSJwV0Qkykhutqy	admin	2023-02-19 03:56:07.391	2023-02-19 03:56:07.391
+1	waddi	admin@waddi.com	$2b$10$pomyyfBE2gNKmG7tC3viq.KV9TzM47pNtgPGeJLU5ijYmlqKElVee	admin	2023-02-19 15:45:02.736	2023-02-19 15:45:02.736
+2	Juan Editor	juan.editor@waddi.com	$2b$10$AOEwQgA14NIVzCBT0F2Kr.0BjJCcLTo78/u.1EfeQe1GBs1jDt9TK	editor	2023-02-19 15:46:01.701	2023-02-19 15:46:01.701
 \.
 
 
@@ -265,7 +266,7 @@ SELECT pg_catalog.setval('public.reviews_id_seq', 1, false);
 -- Name: users_id_seq; Type: SEQUENCE SET; Schema: public; Owner: caveira
 --
 
-SELECT pg_catalog.setval('public.users_id_seq', 4, true);
+SELECT pg_catalog.setval('public.users_id_seq', 2, true);
 
 
 --
