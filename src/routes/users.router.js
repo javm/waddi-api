@@ -7,7 +7,10 @@ const authGuardAdmin = require('#middlewares/auth.admin.middleware');
 const schema = require('#validations/auth.validation');
 const validate = require('#utils/validator.util'); 
 
-router.get('/', usersController.get);
+router.get('/',
+    authGuard,
+    authGuardAdmin,
+    errorHandler(usersController.get));
 router.post('/register', 
     authGuard, 
     authGuardAdmin, 
