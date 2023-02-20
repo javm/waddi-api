@@ -23,4 +23,7 @@ router.delete('/:id', authGuard, authCreatorGuard, errorHandler(postsController.
 /* POST reviews */
 router.post('/:id/reviews', authGuard, errorHandler(reviewsController.post));
 
+/* GET reviews */
+router.get('/:id/reviews', authGuard, errorHandler(reviewsController.get));
+
 module.exports = router;

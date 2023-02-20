@@ -20,6 +20,25 @@ const post = async (req, res) => {
   }
 }
 
+const get = async (req, res) => {
+  const postId = req.params.id;
+  try {
+    const postObj = await Post.findByPk(postId);
+    if (!postObj) {
+      return res.status(404).json({ message: 'Post not found.' });
+    }
+    const reviews = await Review.findAll({
+      where: {
+        post_id: postId
+      }
+    });
+    return res.status(200).json(reviews);
+  } catch (error) {
+    return res.status(500).json({ message: error.message });
+  }
+}
+
 module.exports = {
-  post
+  post,
+  get
 };
