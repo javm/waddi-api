@@ -31,6 +31,11 @@ const get = async (req, res) => {
   return res.status(200).json(postsTagged);
 }
 
+const show = async (req, res) => {
+  const post = await Post.findByPk(req.params.id);
+  return res.status(200).json(post);
+};
+
 const post = async (req, res) => {
   const { title, content } = req.body;
   const post = await Post.create({
@@ -82,5 +87,6 @@ module.exports = {
   get,
   post,
   patch,
-  destroy
+  destroy,
+  show
 };

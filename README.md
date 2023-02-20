@@ -54,3 +54,18 @@ curl --request PATCH \
   --header 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiaWF0IjoxNjc2ODQ3MzcwLCJleHAiOjE2NzY4NTA5NzB9.HgcEjODVemnn7srzWlCY4q0MdCmaxXmA8qeHeUv7YC0' \
   --header 'Content-Type: application/json' \
   --data '  {"title": "new title", "content": "Just for fun 1 edit 3"}'
+```
+# Delete a post
+```
+curl --request DELETE \
+  --url http://localhost:3000/api/posts/1 \
+  --header 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiaWF0IjoxNjc2ODUxNTk4LCJleHAiOjE2NzY4NTUxOTh9.RcKDSizADkKWQcw2Fx313Rn5GSX98dq0iD-PWn7ALYo' \
+  --header 'Content-Type: application/json'
+```
+
+# Show a post
+```curl --request GET \
+  --url http://localhost:3000/api/posts/2 \
+  --header 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiaWF0IjoxNjc2ODQ3MzcwLCJleHAiOjE2NzY4NTA5NzB9.HgcEjODVemnn7srzWlCY4q0MdCmaxXmA8qeHeUv7YC0' \
+  --header 'Content-Type: application/json'
+    ```
