@@ -1,8 +1,7 @@
 
 const {Op} = require('sequelize');
 const moment = require('moment');
-const { Post } = require('#models/index');
-const { PostLog } = require('#models/index');
+const { Post , PostLog} = require('#models/index');
 
 const get = async (req, res) => {
   const {start_date, end_date} = req.query;

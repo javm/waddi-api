@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const postsController = require('#controllers/posts.controller');
+const reviewsController = require('#controllers/reviews.controller');
 const authGuard = require('#middlewares/auth.middleware');
 const authCreatorGuard = require('#middlewares/auth.creator.middleware');
 const errorHandler = require('#middlewares/error.middleware');
@@ -18,5 +19,8 @@ router.post('/', authGuard, authCreatorGuard, errorHandler(postsController.post)
 router.patch('/:id', authGuard, authEditorMiddleware, errorHandler(postsController.patch));
 /* DELETE posts */
 router.delete('/:id', authGuard, authCreatorGuard, errorHandler(postsController.destroy));
+
+/* POST reviews */
+router.post('/:id/reviews', authGuard, errorHandler(reviewsController.post));
 
 module.exports = router;

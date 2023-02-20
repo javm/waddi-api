@@ -9,7 +9,7 @@ const Review = sequelize.define('Review', {
   content: {
     type: DataTypes.TEXT
   },
-  raiting: {
+  rating: {
     type: DataTypes.INTEGER
   },
   user_id: {
