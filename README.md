@@ -69,3 +69,9 @@ curl --request DELETE \
   --header 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiaWF0IjoxNjc2ODQ3MzcwLCJleHAiOjE2NzY4NTA5NzB9.HgcEjODVemnn7srzWlCY4q0MdCmaxXmA8qeHeUv7YC0' \
   --header 'Content-Type: application/json'
     ```
+
+# Show history
+curl --request GET \
+  --url http://localhost:3000/api/history \
+  --header 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiaWF0IjoxNjc2ODQ3MzcwLCJleHAiOjE2NzY4NTA5NzB9.HgcEjODVemnn7srzWlCY4q0MdCmaxXmA8qeHeUv7YC0' \
+  --header 'Content-Type: application/json'
