@@ -11,10 +11,7 @@ app.use(express.json()); // Parse incoming requests with JSON payloads
 app.use(express.urlencoded({ extended: true })); // Parse incoming requests with URL-encoded payloads
 
 // Routes
-const usersRouter = require('#routes/users.router');
-const postsRouter = require('#routes/posts.router');
-//app.use('/auth', authRouter);
-app.use('/api/users', usersRouter);
-app.use('/api/posts', postsRouter);
+const indexRouter = require('#routes/index');
 
+app.use('/api', indexRouter);
 module.exports = app;
