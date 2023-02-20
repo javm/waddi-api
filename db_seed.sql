@@ -73,6 +73,7 @@ CREATE TABLE public.posts (
     id integer NOT NULL,
     title character varying(100) NOT NULL,
     content text NOT NULL,
+    active boolean DEFAULT true NOT NULL,
     created_at timestamp without time zone DEFAULT CURRENT_TIMESTAMP,
     updated_at timestamp without time zone DEFAULT CURRENT_TIMESTAMP
 );
@@ -213,7 +214,9 @@ ALTER TABLE ONLY public.users ALTER COLUMN id SET DEFAULT nextval('public.users_
 --
 
 COPY public.post_logs (id, action, post_id, user_id, created_at, updated_at) FROM stdin;
-1	create	1	2	2023-02-19 17:16:00.069	2023-02-19 17:16:00.069
+2	create	1	2	2023-02-20 00:07:19.85	2023-02-20 00:07:19.85
+3	delete	1	2	2023-02-20 00:07:24.977	2023-02-20 00:07:24.977
+4	create	2	2	2023-02-20 00:07:36.48	2023-02-20 00:07:36.48
 \.
 
 
@@ -221,8 +224,9 @@ COPY public.post_logs (id, action, post_id, user_id, created_at, updated_at) FRO
 -- Data for Name: posts; Type: TABLE DATA; Schema: public; Owner: caveira
 --
 
-COPY public.posts (id, title, content, created_at, updated_at) FROM stdin;
-1	Blog test 1	Just for fun	2023-02-19 17:16:00.056	2023-02-19 17:16:00.056
+COPY public.posts (id, title, content, active, created_at, updated_at) FROM stdin;
+1	Blog test 1	Just for fun 1	f	2023-02-20 00:07:19.838	2023-02-20 00:07:24.966
+2	Blog test 1	Just for fun 1	t	2023-02-20 00:07:36.467	2023-02-20 00:07:36.467
 \.
 
 
@@ -248,14 +252,14 @@ COPY public.users (id, name, email, password, role, created_at, updated_at) FROM
 -- Name: post_logs_id_seq; Type: SEQUENCE SET; Schema: public; Owner: caveira
 --
 
-SELECT pg_catalog.setval('public.post_logs_id_seq', 1, true);
+SELECT pg_catalog.setval('public.post_logs_id_seq', 4, true);
 
 
 --
 -- Name: posts_id_seq; Type: SEQUENCE SET; Schema: public; Owner: caveira
 --
 
-SELECT pg_catalog.setval('public.posts_id_seq', 1, true);
+SELECT pg_catalog.setval('public.posts_id_seq', 2, true);
 
 
 --
@@ -269,7 +273,7 @@ SELECT pg_catalog.setval('public.reviews_id_seq', 1, false);
 -- Name: users_id_seq; Type: SEQUENCE SET; Schema: public; Owner: caveira
 --
 
-SELECT pg_catalog.setval('public.users_id_seq', 2, true);
+SELECT pg_catalog.setval('public.users_id_seq', 1, false);
 
 
 --

@@ -9,4 +9,9 @@ const errorHandler = require('#middlewares/error.middleware');
 router.get('/', errorHandler(postsController.get));
 /* POST posts */
 router.post('/', authGuard, authCreatorGuard, errorHandler(postsController.post));
+/* PATCH posts */
+router.patch('/:id', authGuard, errorHandler(postsController.patch));
+/* DELETE posts */
+router.delete('/:id', authGuard, errorHandler(postsController.destroy));
+
 module.exports = router;

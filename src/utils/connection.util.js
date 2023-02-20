@@ -5,7 +5,11 @@ const sequelize = new Sequelize(config.database, config.username, config.passwor
   host: config.host,
   dialect: 'postgres',
   operatorsAliases: 'false',
-  logging: false
+  logging: false,
+  dialectOptions: {
+    useUTC: true,
+  },
+  timezone: '+00:00',
 });
 
 module.exports = sequelize

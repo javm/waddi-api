@@ -7,10 +7,14 @@ const { PostLog } = require('#models/index');
 const get = async (req, res) => {
   const {start_date, end_date} = req.query;
   const queryObj = {
-    order: [['created_at', 'DESC']]
+    order: [['created_at', 'DESC']],
+    where: {
+      active: true
+    }
   };
   if (start_date && end_date) {
     queryObj.where = {
+      ...queryObj.where,
       created_at: {
         [Op.between]: [new Date(start_date), new Date(end_date)]
       }
@@ -40,7 +44,43 @@ const post = async (req, res) => {
   return res.status(201).json({post: post, postLog: postLog});
 }
 
+const patch = async (req, res) => {
+  const { title, content } = req.body;
+  const post = await Post.update({
+    title,
+    content
+  }, {
+    where: {
+      id: req.params.id
+    }
+  });
+  const postLog = await PostLog.create({
+    user_id: req.user.id, post_id: req.params.id,
+    action: 'update'
+  });
+  const postObj = await Post.findByPk(req.params.id);
+  return res.status(200).json({post: postObj, postLog: postLog});
+}
+
+const destroy = async (req, res) => {
+  const post = await Post.update({
+    active: false
+  },{
+    where: {  
+      id: req.params.id
+    }
+  });
+  const postLog = await PostLog.create({
+    user_id: req.user.id, post_id: req.params.id,
+    action: 'delete'
+  });
+  const postObj = await Post.findByPk(req.params.id);
+  return res.status(200).json({post: postObj, postLog: postLog});
+}
+
 module.exports = {
   get,
-  post
+  post,
+  patch,
+  destroy
 };

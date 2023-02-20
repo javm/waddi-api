@@ -12,6 +12,10 @@ const Post = sequelize.define('Post', {
   },
   content: {
     type: DataTypes.TEXT
+  },
+  active: {
+    type: DataTypes.BOOLEAN,
+    defaultValue: true
   }
 }, {
   tableName: 'posts',
